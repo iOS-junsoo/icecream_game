@@ -167,10 +167,6 @@
                                 <color key="textColor" red="0.97244971989999995" green="0.98044306039999995" blue="0.3136257529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qqg-EH-Jcw">
-                                <rect key="frame" x="348" y="74" width="148" height="121"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XJK-Am-sKb">
                                 <rect key="frame" x="225" y="287" width="44" height="93"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -178,6 +174,13 @@
                                 <state key="normal" image="빈냉동기"/>
                                 <connections>
                                     <action selector="machineClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YpY-Br-TFH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FX3-4q-sDq">
+                                <rect key="frame" x="407" y="104" width="30" height="34"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="sellIceCream:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ic7-Pq-Qg3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -193,6 +196,8 @@
                             <constraint firstItem="UwQ-Bw-res" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="PY4-MP-nUr"/>
                             <constraint firstItem="zwy-8K-H3Q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="0.781" id="QvX-Cj-qUO"/>
                             <constraint firstItem="wDi-8D-2AA" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.15" id="X0d-zp-Xp5"/>
+                            <constraint firstItem="FX3-4q-sDq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Xnd-Y4-GcD"/>
+                            <constraint firstItem="FX3-4q-sDq" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.62" id="YgN-IK-Qv9"/>
                             <constraint firstItem="UwQ-Bw-res" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bQu-Vr-T9H"/>
                             <constraint firstItem="sMd-1O-cQf" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.25" id="qLN-Nq-TDK"/>
                             <constraint firstItem="gvc-0X-W5K" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.183" id="y4o-wy-xet"/>
@@ -206,7 +211,7 @@
                         <outlet property="freezeBtn2" destination="XeY-pW-lix" id="SUc-kC-Kwl"/>
                         <outlet property="freezeBtn3" destination="6Go-eM-Xjl" id="A1y-Ae-2SZ"/>
                         <outlet property="gameStartBtn" destination="wDi-8D-2AA" id="za5-cK-5pN"/>
-                        <outlet property="kids" destination="qqg-EH-Jcw" id="a5W-pH-1kY"/>
+                        <outlet property="kids" destination="FX3-4q-sDq" id="Sho-qq-kvj"/>
                         <outlet property="machineBtn" destination="XJK-Am-sKb" id="Var-hf-MMv"/>
                         <outlet property="machineBtn1" destination="Xrm-lF-iYO" id="xfV-6N-SHA"/>
                         <outlet property="machineBtn2" destination="8jm-n5-X2Q" id="tQD-DF-dl7"/>
@@ -220,7 +225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1157" y="-2042"/>
+            <point key="canvasLocation" x="-1157.345971563981" y="-2043.0769230769231"/>
         </scene>
     </scenes>
     <resources>
