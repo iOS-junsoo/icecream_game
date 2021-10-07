@@ -13,6 +13,10 @@
 		99DD2CA92709AE870010673B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99DD2CA72709AE870010673B /* Main.storyboard */; };
 		99DD2CAB2709AE880010673B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99DD2CAA2709AE880010673B /* Assets.xcassets */; };
 		99DD2CAE2709AE880010673B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99DD2CAC2709AE880010673B /* LaunchScreen.storyboard */; };
+		99DD2D5F270ED09D0010673B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD2D5E270ED09D0010673B /* SecondViewController.swift */; };
+		99DD2D61270ED0B60010673B /* LevelUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD2D60270ED0B60010673B /* LevelUpViewController.swift */; };
+		99DD2D63270EDC740010673B /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD2D62270EDC740010673B /* Level.swift */; };
+		99DD2D8E270F1BB30010673B /* finishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD2D8D270F1BB30010673B /* finishViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		99DD2CAA2709AE880010673B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		99DD2CAD2709AE880010673B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		99DD2CAF2709AE880010673B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99DD2D5E270ED09D0010673B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		99DD2D60270ED0B60010673B /* LevelUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelUpViewController.swift; sourceTree = "<group>"; };
+		99DD2D62270EDC740010673B /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		99DD2D8D270F1BB30010673B /* finishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = finishViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +64,59 @@
 		99DD2CA02709AE860010673B /* icecream_game */ = {
 			isa = PBXGroup;
 			children = (
-				99DD2CA12709AE860010673B /* AppDelegate.swift */,
-				99DD2CA32709AE860010673B /* SceneDelegate.swift */,
-				99DD2CA52709AE860010673B /* ViewController.swift */,
-				99DD2CA72709AE870010673B /* Main.storyboard */,
-				99DD2CAA2709AE880010673B /* Assets.xcassets */,
-				99DD2CAC2709AE880010673B /* LaunchScreen.storyboard */,
-				99DD2CAF2709AE880010673B /* Info.plist */,
+				99DD2D64270EDC7E0010673B /* Model */,
+				99DD2D5A270ED0380010673B /* Asset */,
+				99DD2D5B270ED04B0010673B /* App */,
+				99DD2D5D270ED05E0010673B /* Controller */,
+				99DD2D5C270ED0560010673B /* View */,
 			);
 			path = icecream_game;
+			sourceTree = "<group>";
+		};
+		99DD2D5A270ED0380010673B /* Asset */ = {
+			isa = PBXGroup;
+			children = (
+				99DD2CAA2709AE880010673B /* Assets.xcassets */,
+				99DD2CAF2709AE880010673B /* Info.plist */,
+			);
+			path = Asset;
+			sourceTree = "<group>";
+		};
+		99DD2D5B270ED04B0010673B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				99DD2CA12709AE860010673B /* AppDelegate.swift */,
+				99DD2CA32709AE860010673B /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		99DD2D5C270ED0560010673B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				99DD2CA72709AE870010673B /* Main.storyboard */,
+				99DD2CAC2709AE880010673B /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		99DD2D5D270ED05E0010673B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				99DD2CA52709AE860010673B /* ViewController.swift */,
+				99DD2D5E270ED09D0010673B /* SecondViewController.swift */,
+				99DD2D60270ED0B60010673B /* LevelUpViewController.swift */,
+				99DD2D8D270F1BB30010673B /* finishViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		99DD2D64270EDC7E0010673B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				99DD2D62270EDC740010673B /* Level.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +190,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99DD2D63270EDC740010673B /* Level.swift in Sources */,
+				99DD2D5F270ED09D0010673B /* SecondViewController.swift in Sources */,
+				99DD2D8E270F1BB30010673B /* finishViewController.swift in Sources */,
 				99DD2CA62709AE860010673B /* ViewController.swift in Sources */,
 				99DD2CA22709AE860010673B /* AppDelegate.swift in Sources */,
 				99DD2CA42709AE860010673B /* SceneDelegate.swift in Sources */,
+				99DD2D61270ED0B60010673B /* LevelUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,7 +347,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JXFMRW69P3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = icecream_game/Info.plist;
+				INFOPLIST_FILE = icecream_game/Asset/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -319,7 +375,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JXFMRW69P3;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = icecream_game/Info.plist;
+				INFOPLIST_FILE = icecream_game/Asset/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

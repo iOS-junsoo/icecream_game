@@ -10,6 +10,7 @@ import UIKit
 class ViewController: UIViewController {
     
     var timer = Timer()
+    //버튼들의 클릭 상태를 나타내주는 변수
     var stateStrawberry = false
     var stateVanilla = false
     var stateMelon = false
@@ -23,11 +24,14 @@ class ViewController: UIViewController {
     var stateFreeze1 = false
     var stateFreeze2 = false
     var stateFreeze3 = false
+    
+    //아이스크림 다시 만들 때 오류를 수정해주느 변수들
     var checkSugar = ""
     var checkIceCream1 = ""
     var checkIceCream2 = ""
     var checkIceCream3 = ""
     var checkIceCream4 = ""
+    
     var flagSugar1 = 0 //아이스크림을 만들 때 다른 시럽을 갔다와도 해당 냉동기의 시럽은 유지되게 하는 변수
     var statecheck1 = "" //시럽을 냉동기에 넣었을 때 해당 시럽을 저장하도록 하는 변수
     var flagSugar2 = 0 //아이스크림을 만들 때 다른 시럽을 갔다와도 해당 냉동기의 시럽은 유지되게 하는 변수
@@ -53,6 +57,16 @@ class ViewController: UIViewController {
     var whichStick3 = 0
     var whichStick4 = 0
     var money = 0
+    var level:Level = Level(progress: 0.0167, targetMoney: 1000)
+    
+    //초등학생과 돈 버튼 교체 변수
+    var countKids = 1
+    
+    //냉동기 청소 여부 확인 변수
+    var freezeCount1 = 0
+    var freezeCount2 = 0
+    var freezeCount3 = 0
+    var freezeCount4 = 0
     
     @IBOutlet weak var strawberryBtn: UIButton!
     @IBOutlet weak var vanillaBtn: UIButton!
@@ -71,11 +85,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var gameStartBtn: UIButton!
     @IBOutlet weak var currentMoney: UILabel!
     @IBOutlet weak var kids: UIButton!
+    @IBOutlet weak var levelLabel: UILabel!
+    @IBOutlet weak var targetMoney: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         progressBar.progress = 0.0
-        self.machineBtn.setImage(UIImage(named: "빈냉동기"), for: .normal)
+        self.targetMoney.text = "\(level.targetMoney)" + "원"
         
     }
     
@@ -132,16 +149,23 @@ class ViewController: UIViewController {
         flagSugar2 = 0
         flagSugar3 = 0
         flagSugar4 = 0
+        statecheck1 = ""
+        statecheck2 = ""
+        statecheck3 = ""
+        statecheck4 = ""
+        self.currentMoney.text = "000"
+        self.money = 0
         self.machineBtn.setImage(UIImage(named: "빈냉동기"), for: .normal)
         self.machineBtn1.setImage(UIImage(named: "빈냉동기"), for: .normal)
         self.machineBtn2.setImage(UIImage(named: "빈냉동기"), for: .normal)
         self.machineBtn3.setImage(UIImage(named: "빈냉동기"), for: .normal)
+        self.levelLabel.text = ""
         var progress: Float = 0.0
-        progressBar.progress = progress
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.kids.setImage(UIImage(named: "초등학생"), for: .normal)
-            self.disappearKids()
-        }
+        progressBar.progress = level.progress
+        
+        self.kids.setImage(UIImage(named: "초등학생"), for: .normal)
+            
+    
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
                 self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in
@@ -169,16 +193,16 @@ class ViewController: UIViewController {
         }
     }
     
-    //초등학생
-    private func disappearKids() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-            self.kids.setImage(UIImage(named: "초등학생화남"), for: .normal)
-        }
-    }
-    
     //첫번째 냉동기 작동
     @IBAction func machineClicked(_ sender: UIButton) {
         stateMachine = true
+        if freezeCount1 == 1 {
+            let alert2 = UIAlertController(title: "⚠️경고⚠️", message: "냉동기를 청소해주세요", preferredStyle: .alert)
+            alert2.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { (_) in
+                
+            }))
+            self.present(alert2, animated: true, completion: nil)
+        }
         
         if flagSugar1 == 0 {
             if stateStrawberry == true {
@@ -241,11 +265,13 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.machineBtn.setImage(UIImage(named: "멜론막대"), for: .normal)
                     self.stateMachine = false
+                    print(self.stickCheck1)
                 }
             } else if self.stickCheck1 == "beanstick" && self.stateMachine == true && self.statecheck1 == "strawberry" {
                 DispatchQueue.main.async {
                     self.machineBtn.setImage(UIImage(named: "팥딸기"), for: .normal)
                     self.stateMachine = false
+                    print(self.stickCheck1)
                 }
             } else if self.stickCheck1 == "beanstick" && self.stateMachine == true && self.statecheck1 == "vanilla" {
                 DispatchQueue.main.async {
@@ -264,7 +290,13 @@ class ViewController: UIViewController {
     //두번째 냉동기 작동
     @IBAction func machine1Clicked(_ sender: UIButton) {
         stateMachine1 = true
-        
+        if freezeCount2 == 1 {
+            let alert2 = UIAlertController(title: "⚠️경고⚠️", message: "냉동기를 청소해주세요", preferredStyle: .alert)
+            alert2.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { (_) in
+                
+            }))
+            self.present(alert2, animated: true, completion: nil)
+        }
         if flagSugar2 == 0 {
             if stateStrawberry == true {
                 statecheck2 = "strawberry"
@@ -346,7 +378,13 @@ class ViewController: UIViewController {
     //세번째 냉동기 작동
     @IBAction func machine2Clicked(_ sender: UIButton) {
         stateMachine2 = true
-        
+        if freezeCount3 == 1 {
+            let alert2 = UIAlertController(title: "⚠️경고⚠️", message: "냉동기를 청소해주세요", preferredStyle: .alert)
+            alert2.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { (_) in
+                
+            }))
+            self.present(alert2, animated: true, completion: nil)
+        }
         if flagSugar3 == 0 {
             if stateStrawberry == true {
                 statecheck3 = "strawberry"
@@ -427,7 +465,13 @@ class ViewController: UIViewController {
     //네번째 냉동기 작동
     @IBAction func machine3Clicked(_ sender: UIButton) {
         stateMachine3 = true
-        
+        if freezeCount4 == 1 {
+            let alert2 = UIAlertController(title: "⚠️경고⚠️", message: "냉동기를 청소해주세요", preferredStyle: .alert)
+            alert2.addAction(UIAlertAction(title: "확인", style: .cancel, handler: { (_) in
+                
+            }))
+            self.present(alert2, animated: true, completion: nil)
+        }
         if flagSugar4 == 0 {
             if stateStrawberry == true {
                 statecheck4 = "strawberry"
@@ -510,7 +554,7 @@ class ViewController: UIViewController {
         stateFreeze = true
         flagSugar1 = 0
         flagStick1 = 0
-        
+        freezeCount1 = 1
         DispatchQueue.global(qos: .userInitiated).sync {
             if self.stateFreeze == true && self.statecheck1 == "strawberry" && self.stateStick == true  {
                 DispatchQueue.main.async {
@@ -571,6 +615,7 @@ class ViewController: UIViewController {
         stateFreeze1 = true
         flagSugar2 = 0
         flagStick2 = 0
+        freezeCount2 = 1
         DispatchQueue.global(qos: .userInitiated).sync {
             if self.stateFreeze1 == true && self.statecheck2 == "strawberry" && self.stateStick == true  {
                 DispatchQueue.main.async {
@@ -629,6 +674,7 @@ class ViewController: UIViewController {
         stateFreeze2 = true
         flagSugar3 = 0
         flagStick3 = 0
+        freezeCount3 = 1
         DispatchQueue.global(qos: .userInitiated).sync {
             if self.stateFreeze2 == true && self.statecheck3 == "strawberry" && self.stateStick == true  {
                 DispatchQueue.main.async {
@@ -687,6 +733,7 @@ class ViewController: UIViewController {
         stateFreeze3 = true
         flagSugar4 = 0
         flagStick4 = 0
+        freezeCount4 = 1
         DispatchQueue.global(qos: .userInitiated).sync {
             if self.stateFreeze3 == true && self.statecheck4 == "strawberry" && self.stateStick == true  {
                 DispatchQueue.main.async {
@@ -737,39 +784,118 @@ class ViewController: UIViewController {
         }
     }
     
+    //초등학생 클릭
     @IBAction func sellIceCream(_ sender: UIButton) {
         DispatchQueue.global(qos: .userInitiated).sync {
-            
-            DispatchQueue.main.async {
-                if self.stateFreeze && self.whichStick1 == 1 {
-                    self.money += 100
-                } else if self.stateFreeze && self.whichStick1 == 2 {
-                    self.money += 200
-                } else if self.stateFreeze && self.whichStick2 == 1 {
-                    self.money += 100
-                } else if self.stateFreeze && self.whichStick2 == 2 {
-                    self.money += 200
-                } else if self.stateFreeze && self.whichStick3 == 1 {
-                    self.money += 100
-                } else if self.stateFreeze && self.whichStick3 == 2 {
-                    self.money += 200
-                } else if self.stateFreeze && self.whichStick4 == 1 {
-                    self.money += 100
-                } else if self.stateFreeze && self.whichStick4 == 2 {
-                    self.money += 200
+            print(countKids)
+            if countKids % 2 == 0 {
+                DispatchQueue.main.async {
+                    if self.stateFreeze && self.whichStick1 == 1 {
+                        self.money += 100
+                    } else if self.stateFreeze && self.whichStick1 == 2 {
+                        self.money += 200
+                    } else if self.stateFreeze && self.whichStick2 == 1 {
+                        self.money += 100
+                    } else if self.stateFreeze && self.whichStick2 == 2 {
+                        self.money += 200
+                    } else if self.stateFreeze && self.whichStick3 == 1 {
+                        self.money += 100
+                    } else if self.stateFreeze && self.whichStick3 == 2 {
+                        self.money += 200
+                    } else if self.stateFreeze && self.whichStick4 == 1 {
+                        self.money += 100
+                    } else if self.stateFreeze && self.whichStick4 == 2 {
+                        self.money += 200
+                    }
+                   // print(self.money)
+                    self.currentMoney.text = String(self.money)
+                    self.currentMoney.sizeToFit()
+                    self.whichStick1 = 0
+                    self.whichStick2 = 0
+                    self.whichStick3 = 0
+                    self.whichStick4 = 0
+                    self.kids.setImage(UIImage(named: "초등학생"), for: .normal)
+                    self.countKids += 1
+                    if self.money >= self.level.targetMoney {
+                        self.stateStrawberry = false
+                        self.stateVanilla = false
+                        self.stateMelon = false
+                        self.stateBeanStick = false
+                        self.stateStick = false
+                        self.flagStick1 = 0
+                        self.flagStick2 = 0
+                        self.flagStick3 = 0
+                        self.flagStick4 = 0
+                        self.flagSugar1 = 0
+                        self.flagSugar2 = 0
+                        self.flagSugar3 = 0
+                        self.flagSugar4 = 0
+                        self.statecheck1 = ""
+                        self.statecheck2 = ""
+                        self.statecheck3 = ""
+                        self.statecheck4 = ""
+                        self.currentMoney.text = "000"
+                        self.money = 0
+                        self.machineBtn.setImage(UIImage(named: "빈냉동기"), for: .normal)
+                        self.machineBtn1.setImage(UIImage(named: "빈냉동기"), for: .normal)
+                        self.machineBtn2.setImage(UIImage(named: "빈냉동기"), for: .normal)
+                        self.machineBtn3.setImage(UIImage(named: "빈냉동기"), for: .normal)
+                        self.timer.invalidate()
+                        
+                        self.money = 0
+                        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "LevelUpViewController") as? LevelUpViewController {
+                            //스토리보드가 있으면 스토리보드에 SecondVC라는 이름을 가진 ViewViewController 인스턴스를 만드는데 그거의 타입은 SecondViewController이다.
+                            
+                            vc.modalPresentationStyle = .fullScreen
+                            //modalPresentationStyle: 어떤식으로 화면을 전환하고 싶나?
+                            
+                            self.present(vc, animated: true)
+                            //vc라는 화면의 애니메이션을 True로 한다,.
+                        }
+                    }
                 }
-               // print(self.money)
-                self.currentMoney.text = String(self.money)
-                self.whichStick1 = 0
-                self.whichStick2 = 0
-                self.whichStick3 = 0
-                self.whichStick4 = 0
+            
+            } else {
+                self.kids.setImage(UIImage(named: "돈"), for: .normal)
+                self.countKids += 1
+                
             }
         }
     }
     
     
-    
+    //냉동기 청소
+    @IBAction func reset(_ sender: UIButton) {
+        stateStrawberry = false
+        stateVanilla = false
+        stateMelon = false
+        stateBeanStick = false
+        stateStick = false
+        flagStick1 = 0
+        flagStick2 = 0
+        flagStick3 = 0
+        flagStick4 = 0
+        flagSugar1 = 0
+        flagSugar2 = 0
+        flagSugar3 = 0
+        flagSugar4 = 0
+        statecheck1 = " "
+        statecheck2 = " "
+        statecheck3 = " "
+        statecheck4 = " "
+        stickCheck1 = " "
+        stickCheck2 = " "
+        stickCheck3 = " "
+        stickCheck4 = " "
+        self.machineBtn.setImage(UIImage(named: "빈냉동기"), for: .normal)
+        self.machineBtn1.setImage(UIImage(named: "빈냉동기"), for: .normal)
+        self.machineBtn2.setImage(UIImage(named: "빈냉동기"), for: .normal)
+        self.machineBtn3.setImage(UIImage(named: "빈냉동기"), for: .normal)
+        freezeCount1 = 0
+        freezeCount2 = 0
+        freezeCount3 = 0
+        freezeCount4 = 0
+    }
 }
 
 
