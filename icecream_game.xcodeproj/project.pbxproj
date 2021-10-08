@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		996BD92627100E3B005B0851 /* startViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996BD92527100E3B005B0851 /* startViewController.swift */; };
+		996BD92827100FAE005B0851 /* HowtoplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996BD92727100FAE005B0851 /* HowtoplayViewController.swift */; };
 		99DD2CA22709AE860010673B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD2CA12709AE860010673B /* AppDelegate.swift */; };
 		99DD2CA42709AE860010673B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD2CA32709AE860010673B /* SceneDelegate.swift */; };
 		99DD2CA62709AE860010673B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99DD2CA52709AE860010673B /* ViewController.swift */; };
@@ -20,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		996BD92527100E3B005B0851 /* startViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startViewController.swift; sourceTree = "<group>"; };
+		996BD92727100FAE005B0851 /* HowtoplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowtoplayViewController.swift; sourceTree = "<group>"; };
 		99DD2C9E2709AE860010673B /* icecream_game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = icecream_game.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99DD2CA12709AE860010673B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		99DD2CA32709AE860010673B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 		99DD2D5D270ED05E0010673B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				996BD92527100E3B005B0851 /* startViewController.swift */,
+				996BD92727100FAE005B0851 /* HowtoplayViewController.swift */,
 				99DD2CA52709AE860010673B /* ViewController.swift */,
 				99DD2D5E270ED09D0010673B /* SecondViewController.swift */,
 				99DD2D60270ED0B60010673B /* LevelUpViewController.swift */,
@@ -191,6 +197,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				99DD2D63270EDC740010673B /* Level.swift in Sources */,
+				996BD92627100E3B005B0851 /* startViewController.swift in Sources */,
+				996BD92827100FAE005B0851 /* HowtoplayViewController.swift in Sources */,
 				99DD2D5F270ED09D0010673B /* SecondViewController.swift in Sources */,
 				99DD2D8E270F1BB30010673B /* finishViewController.swift in Sources */,
 				99DD2CA62709AE860010673B /* ViewController.swift in Sources */,

@@ -1,14 +1,8 @@
-//
-//  ViewController.swift
-//  icecream_game
-//
-//  Created by 준수김 on 2021/10/03.
-//
-
 import UIKit
 
 class ViewController: UIViewController {
     
+    //
     var timer = Timer()
     //버튼들의 클릭 상태를 나타내주는 변수
     var stateStrawberry = false
@@ -31,7 +25,6 @@ class ViewController: UIViewController {
     var checkIceCream2 = ""
     var checkIceCream3 = ""
     var checkIceCream4 = ""
-    
     var flagSugar1 = 0 //아이스크림을 만들 때 다른 시럽을 갔다와도 해당 냉동기의 시럽은 유지되게 하는 변수
     var statecheck1 = "" //시럽을 냉동기에 넣었을 때 해당 시럽을 저장하도록 하는 변수
     var flagSugar2 = 0 //아이스크림을 만들 때 다른 시럽을 갔다와도 해당 냉동기의 시럽은 유지되게 하는 변수
@@ -165,13 +158,11 @@ class ViewController: UIViewController {
         
         self.kids.setImage(UIImage(named: "초등학생"), for: .normal)
             
-    
+        //MARK: - 타이머 쓰레드
         DispatchQueue.global(qos: .userInitiated).async {
             DispatchQueue.main.async {
                 self.timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block: {(timer) in
-                    
                     progress += 0.0167
-                    //print(self.progressBar.progress)
                     self.progressBar.progress = progress
                     if self.progressBar.progress == 1.0 {
                         print("⏰타이머종료⏰")
@@ -204,6 +195,7 @@ class ViewController: UIViewController {
             self.present(alert2, animated: true, completion: nil)
         }
         
+        //시럽을 모두 먼저 채우고 다시 막대기를 선택했을 떄 오류가 나는 것을 방지하기 위해서
         if flagSugar1 == 0 {
             if stateStrawberry == true {
                 statecheck1 = "strawberry"
@@ -217,7 +209,7 @@ class ViewController: UIViewController {
             }
         }
         
-        
+        //이전 냉동기에서 막대기를 고르고 현재 냉동기에서 팥막대기를 골랐을 때 생기는 오류를 방지하기 위해서
         if flagStick1 == 0 {
             if stateStick == true{
                 stickCheck1 = "stick"
@@ -229,6 +221,7 @@ class ViewController: UIViewController {
         }
         
         //액체
+        //MARK: - 시럽 쓰레드
         DispatchQueue.global(qos: .userInitiated).sync {
             if self.statecheck1 == "strawberry" && self.stateMachine == true {
                 DispatchQueue.main.async {
@@ -250,6 +243,7 @@ class ViewController: UIViewController {
          }
         
         //액체 + 막대기
+        //MARK: - 막대기 쓰레드
         DispatchQueue.global(qos: .userInitiated).sync {
             if self.stickCheck1 == "stick" && self.stateMachine == true && self.statecheck1 == "strawberry" {
                 DispatchQueue.main.async {
