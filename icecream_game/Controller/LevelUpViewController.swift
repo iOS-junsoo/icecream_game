@@ -22,6 +22,8 @@ class LevelUpViewController: UIViewController {
             
             self.present(vc, animated: true)
             //vc라는 화면의 애니메이션을 True로 한다,.
+            
+            
         }
     }
     
